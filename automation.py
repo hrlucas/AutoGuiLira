@@ -1,88 +1,156 @@
+import os
 import time
 import datetime
-import threading
-import os
 import facilities_al
 import tracking_al
 import hist
 import hist_1
-
-### Sempre iniciar na ordem - Monitor de rastreamento - Relatórios de Viagens - Relatórios diversos ###
+import licencas_multi
+import equipamentos
 
 # Caminho do log
 LOG_PATH = r"C:\Users\Gral\Projetos\AutoGuiLira\log_execucoes.txt"
 
-# Define os horários principais (com hora exata)
-HORARIOS_BASE = ["08:30", "10:00", "13:30", "15:00"]
+# Horários principais
+HORARIOS_AUTOMATION = ["08:30", "10:00", "13:30", "15:00"]
+HORARIOS_MULTI = ["08:00"]
 
 def str_to_time(hora_str):
-    # Converte string para objeto de tempo 
     return datetime.datetime.strptime(hora_str, "%H:%M").time()
 
 def agendar_execucoes():
-    # Calcula os horários de execução para cada script 
     execucoes = []
 
-    for hora_str in HORARIOS_BASE:
+    # Automation
+    for hora_str in HORARIOS_AUTOMATION:
         base_time = str_to_time(hora_str)
+        data = datetime.datetime.combine(datetime.date.today(), base_time)
+        execucoes.extend([
+            (data - datetime.timedelta(minutes=9), "facilities"),
+            (data - datetime.timedelta(minutes=6), "hist"),
+            (data - datetime.timedelta(minutes=3), "hist_1"),
+            (data, "tracking"),
+        ])
 
-        # Calcula os horários de execução para cada script
-        hora_tracking = datetime.datetime.combine(datetime.date.today(), base_time)
-        hora_facilities = hora_tracking - datetime.timedelta(minutes=9)
-        hora_hist = hora_tracking - datetime.timedelta(minutes=6)
-        hora_hist_1 = hora_tracking - datetime.timedelta(minutes=3)
-
-        execucoes.append((hora_facilities.time(), "facilities"))
-        execucoes.append((hora_hist.time(), "hist"))
-        execucoes.append((hora_hist_1.time(), "hist_1"))  
-        execucoes.append((hora_tracking.time(), "tracking"))
+    # Multi
+    for hora_str in HORARIOS_MULTI:
+        base_time = str_to_time(hora_str)
+        data = datetime.datetime.combine(datetime.date.today(), base_time)
+        execucoes.extend([
+            (data, "equipamentos"),
+            (data + datetime.timedelta(minutes=3), "licencas"),
+        ])
 
     return execucoes
 
-def loop_agendador():
-   # Loop principal para agendar e executar os scripts nos horários definidos 
-    execucoes_realizadas = set()
+def verificar_arquivo(tarefa):
+    time.sleep(120)  # Aguarda 2 minutos
+    data_atual = datetime.datetime.now()
 
-    while True:
-        agora = datetime.datetime.now().time().replace(second=0, microsecond=0)
+    if tarefa == "facilities":
+        caminho = r"C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira"
+        esperado = "facilities_al"
+    elif tarefa == "tracking":
+        caminho = r"C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira"
+        esperado = "tracking_al"
+    elif tarefa == "hist":
+        mes_anterior = data_atual.month - 1 or 12
+        ano = data_atual.year if data_atual.month > 1 else data_atual.year - 1
+        esperado = f"{ano}.{mes_anterior:02d}"
+        caminho = r"C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira\hist"
+    elif tarefa == "hist_1":
+        esperado = data_atual.strftime("%Y.%m_HV")
+        caminho = r"C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira\hist"
+    elif tarefa == "equipamentos":
+        caminho = r"C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\multi\teste"
+        esperado = "Relatório_de_Equipamentos.csv"
+    elif tarefa == "licencas":
+        caminho = r"C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\multi\teste"
+        esperado = "Relatório_de_Licenças.csv"
+    else:
+        return
 
-        for hora, tarefa in agendar_execucoes():
-            if agora == hora and (hora, tarefa) not in execucoes_realizadas:
-                execucoes_realizadas.add((hora, tarefa))
-                executar_tarefa(tarefa)
+    arquivos = os.listdir(caminho)
+    # Pega o horário programado da tarefa
+    execucoes = {t: dt for dt, t in agendar_execucoes()}
+    horario_tarefa = execucoes.get(tarefa)
+    if not horario_tarefa:
+        horario_tarefa = data_atual
 
-        # Limpa o set à meia-noite
-        if datetime.datetime.now().time() == datetime.time(0, 0):
-            execucoes_realizadas.clear()
+    sucesso = False
+    for nome in arquivos:
+        if esperado in nome:
+            caminho_arquivo = os.path.join(caminho, nome)
+            mtime = datetime.datetime.fromtimestamp(os.path.getmtime(caminho_arquivo))
+            # Verifica se está dentro de 10 minutos do horário programado
+            if abs((mtime - horario_tarefa).total_seconds()) <= 600:
+                sucesso = True
+                break
 
-        time.sleep(1)
+    tipo = "AUTOMATION" if tarefa in ["facilities", "tracking", "hist", "hist_1"] else "MULTI"
+    resultado = "✔ ARQUIVO GERADO COM SUCESSO" if sucesso else "✖ ERRO: ARQUIVO NÃO GERADO"
 
-def registrar_log(mensagem):
-    # Registra a execução no log 
-    os.makedirs(os.path.dirname(LOG_PATH), exist_ok=True)
-    with open(LOG_PATH, "a", encoding="utf-8") as f:
-        f.write(f"{mensagem}\n")
+    mensagem = f"""
+#########################################################
+### [{tipo}] RESULTADO DA EXECUÇÃO - {tarefa.upper()}
+### VERIFICAÇÃO APÓS 2 MINUTOS
+### DIRETÓRIO: {caminho}
+### ESPERADO: {esperado}
+### RESULTADO: {resultado}
+#########################################################
+"""
+    registrar_log(mensagem)
 
 def executar_tarefa(tarefa):
-   # Executa o script conforme o tipo de tarefa "
     agora_str = datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')
-    mensagem_log = f"{agora_str} - Executando: {tarefa}"
-    print(mensagem_log)
-    registrar_log(mensagem_log)
+    tipo = "AUTOMATION" if tarefa in ["facilities", "tracking", "hist", "hist_1"] else "MULTI"
+    cabecalho = f"""
+=========================================================
+### [{tipo}] INICIANDO EXECUÇÃO: {tarefa.upper()} - {agora_str}
+========================================================="""
+    print(cabecalho)
+    registrar_log(cabecalho)
 
     try:
+        import threading
         if tarefa == "tracking":
             threading.Thread(target=tracking_al.main).start()
         elif tarefa == "facilities":
             threading.Thread(target=facilities_al.main).start()
         elif tarefa == "hist":
             threading.Thread(target=hist.main).start()
-        elif tarefa == "hist_1":  
+        elif tarefa == "hist_1":
             threading.Thread(target=hist_1.main).start()
+        elif tarefa == "equipamentos":
+            threading.Thread(target=equipamentos.main).start()
+        elif tarefa == "licencas":
+            threading.Thread(target=licencas_multi.main).start()
+        
+        threading.Thread(target=verificar_arquivo, args=(tarefa,)).start()
     except Exception as e:
-        erro_log = f"{agora_str} - ERRO ao executar {tarefa}: {str(e)}"
+        erro_log = f"""
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! ERRO AO EXECUTAR {tarefa.upper()}: {str(e)}
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"""
         print(erro_log)
         registrar_log(erro_log)
+
+def registrar_log(mensagem):
+    os.makedirs(os.path.dirname(LOG_PATH), exist_ok=True)
+    with open(LOG_PATH, "a", encoding="utf-8") as f:
+        f.write(f"{mensagem}\n")
+
+def loop_agendador():
+    execucoes_realizadas = set()
+    while True:
+        agora = datetime.datetime.now().replace(second=0, microsecond=0)
+        for dt, tarefa in agendar_execucoes():
+            if agora == dt and (dt, tarefa) not in execucoes_realizadas:
+                execucoes_realizadas.add((dt, tarefa))
+                executar_tarefa(tarefa)
+        if datetime.datetime.now().time() == datetime.time(0, 0):
+            execucoes_realizadas.clear()
+        time.sleep(1)
 
 if __name__ == "__main__":
     loop_agendador()

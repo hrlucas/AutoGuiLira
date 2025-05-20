@@ -18,14 +18,9 @@ def main():
         print("Janela não encontrada!")
         return
 
-    # Agora, a janela está ativa e podemos realizar os cliques e interações com a interface
-
-    # Exemplo de clique na posição (100, 35) que você mencionou
     pyautogui.click(x=385, y=35)  # Clique no item "RELATÓRIOS DIVERSOS" ou similar
     time.sleep(2)  # Espera 2 segundos antes de continuar
 
-    # Outros cliques, preenchimentos e interações podem ser realizados da mesma forma
-    # Exemplo de outro clique
     pyautogui.click(x=1850, y=90)  # Clique no item "CONSULTAR"
     time.sleep(2)
 

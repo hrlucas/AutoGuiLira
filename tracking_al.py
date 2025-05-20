@@ -7,14 +7,14 @@ from datetime import datetime  # Para obter o ano e o mês atuais
 pyautogui.FAILSAFE = True
 
 def main():
-    # Título da janela que você deseja ativar
+
     titulo_janela = "Angel.Lira - Módulo Logística"
     
     # Obtém todas as janelas abertas com o título especificado
     janelas = gw.getWindowsWithTitle(titulo_janela)
     
     if janelas:
-        # Ativa a primeira janela que corresponde ao título
+ 
         janela = janelas[0]
         janela.activate()  # Ativa a janela
         time.sleep(2)  # Aguarda um tempo para garantir que a janela foi ativada corretamente
