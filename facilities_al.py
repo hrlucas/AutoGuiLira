@@ -32,7 +32,7 @@ def main():
     time.sleep(1) 
 
     pyautogui.click(x=1050, y=550)  # Clique para aplicar o código do parâmetro
-    time.sleep(55)  # Aguarda um tempo para garantir que a aplicação foi feita
+    time.sleep(70)  # Aguarda um tempo para garantir que a aplicação foi feita
 
     # Clique para exportar o arquivo
     pyautogui.click(x=1800, y=990)  # Clique no botão "EXPORTAR"

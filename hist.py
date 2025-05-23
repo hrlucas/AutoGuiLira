@@ -66,7 +66,7 @@ def main():
 
     # Atualiza - F5
     pyautogui.press('f5')
-    time.sleep(55)
+    time.sleep(70)
 
     # Clique 2 – (1655, 999)
     pyautogui.click(x=1655, y=999)  # EXPORTAR

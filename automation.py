@@ -44,7 +44,7 @@ def agendar_execucoes():
     return execucoes
 
 def verificar_arquivo(tarefa):
-    time.sleep(120)  # Aguarda 2 minutos
+    time.sleep(240)  # Aguarda 4 minutos
     data_atual = datetime.datetime.now()
 
     if tarefa == "facilities":
@@ -62,10 +62,10 @@ def verificar_arquivo(tarefa):
         esperado = data_atual.strftime("%Y.%m_HV")
         caminho = r"C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira\hist"
     elif tarefa == "equipamentos":
-        caminho = r"C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\multi\teste"
+        caminho = r"C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\multi"
         esperado = "Relatório_de_Equipamentos.csv"
     elif tarefa == "licencas":
-        caminho = r"C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\multi\teste"
+        caminho = r"C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\multi"
         esperado = "Relatório_de_Licenças.csv"
     else:
         return
@@ -93,7 +93,7 @@ def verificar_arquivo(tarefa):
     mensagem = f"""
 #########################################################
 ### [{tipo}] RESULTADO DA EXECUÇÃO - {tarefa.upper()}
-### VERIFICAÇÃO APÓS 2 MINUTOS
+### VERIFICAÇÃO APÓS 4 MINUTOS
 ### DIRETÓRIO: {caminho}
 ### ESPERADO: {esperado}
 ### RESULTADO: {resultado}
