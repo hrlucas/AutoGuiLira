@@ -963,3 +963,561 @@
 ### RESULTADO: ✔ ARQUIVO GERADO COM SUCESSO
 #########################################################
 
+
+=========================================================
+### [MULTI] INICIANDO EXECUÇÃO: EQUIPAMENTOS - 24/05/2025 08:00:00
+=========================================================
+
+=========================================================
+### [MULTI] INICIANDO EXECUÇÃO: LICENCAS - 24/05/2025 08:03:00
+=========================================================
+
+#########################################################
+### [MULTI] RESULTADO DA EXECUÇÃO - EQUIPAMENTOS
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\multi
+### ESPERADO: Relatório_de_Equipamentos.csv
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+#########################################################
+### [MULTI] RESULTADO DA EXECUÇÃO - LICENCAS
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\multi
+### ESPERADO: Relatório_de_Licenças.csv
+### RESULTADO: ✔ ARQUIVO GERADO COM SUCESSO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: FACILITIES - 24/05/2025 08:21:00
+=========================================================
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: HIST - 24/05/2025 08:24:00
+=========================================================
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - FACILITIES
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira
+### ESPERADO: facilities_al
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: HIST_1 - 24/05/2025 08:27:00
+=========================================================
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - HIST
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira\hist
+### ESPERADO: 2025.04
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: TRACKING - 24/05/2025 08:30:00
+=========================================================
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - HIST_1
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira\hist
+### ESPERADO: 2025.05_HV
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - TRACKING
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira
+### ESPERADO: tracking_al
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: FACILITIES - 24/05/2025 09:51:00
+=========================================================
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: HIST - 24/05/2025 09:54:00
+=========================================================
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - FACILITIES
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira
+### ESPERADO: facilities_al
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: HIST_1 - 24/05/2025 09:57:00
+=========================================================
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - HIST
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira\hist
+### ESPERADO: 2025.04
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: TRACKING - 24/05/2025 10:00:00
+=========================================================
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - HIST_1
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira\hist
+### ESPERADO: 2025.05_HV
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - TRACKING
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira
+### ESPERADO: tracking_al
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: FACILITIES - 24/05/2025 13:21:00
+=========================================================
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: HIST - 24/05/2025 13:24:00
+=========================================================
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - FACILITIES
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira
+### ESPERADO: facilities_al
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: HIST_1 - 24/05/2025 13:27:00
+=========================================================
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - HIST
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira\hist
+### ESPERADO: 2025.04
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: TRACKING - 24/05/2025 13:30:00
+=========================================================
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - HIST_1
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira\hist
+### ESPERADO: 2025.05_HV
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - TRACKING
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira
+### ESPERADO: tracking_al
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: FACILITIES - 24/05/2025 14:51:00
+=========================================================
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: HIST - 24/05/2025 14:54:00
+=========================================================
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - FACILITIES
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira
+### ESPERADO: facilities_al
+### RESULTADO: ✔ ARQUIVO GERADO COM SUCESSO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: HIST_1 - 24/05/2025 14:57:00
+=========================================================
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - HIST
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira\hist
+### ESPERADO: 2025.04
+### RESULTADO: ✔ ARQUIVO GERADO COM SUCESSO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: TRACKING - 24/05/2025 15:00:00
+=========================================================
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - HIST_1
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira\hist
+### ESPERADO: 2025.05_HV
+### RESULTADO: ✔ ARQUIVO GERADO COM SUCESSO
+#########################################################
+
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - TRACKING
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira
+### ESPERADO: tracking_al
+### RESULTADO: ✔ ARQUIVO GERADO COM SUCESSO
+#########################################################
+
+
+=========================================================
+### [MULTI] INICIANDO EXECUÇÃO: EQUIPAMENTOS - 25/05/2025 08:00:00
+=========================================================
+
+=========================================================
+### [MULTI] INICIANDO EXECUÇÃO: LICENCAS - 25/05/2025 08:03:00
+=========================================================
+
+#########################################################
+### [MULTI] RESULTADO DA EXECUÇÃO - EQUIPAMENTOS
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\multi
+### ESPERADO: Relatório_de_Equipamentos.csv
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+#########################################################
+### [MULTI] RESULTADO DA EXECUÇÃO - LICENCAS
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\multi
+### ESPERADO: Relatório_de_Licenças.csv
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: FACILITIES - 25/05/2025 08:21:00
+=========================================================
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: HIST - 25/05/2025 08:24:00
+=========================================================
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - FACILITIES
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira
+### ESPERADO: facilities_al
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: HIST_1 - 25/05/2025 08:27:00
+=========================================================
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - HIST
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira\hist
+### ESPERADO: 2025.04
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: TRACKING - 25/05/2025 08:30:00
+=========================================================
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - HIST_1
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira\hist
+### ESPERADO: 2025.05_HV
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - TRACKING
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira
+### ESPERADO: tracking_al
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: FACILITIES - 25/05/2025 09:51:00
+=========================================================
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: HIST - 25/05/2025 09:54:00
+=========================================================
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - FACILITIES
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira
+### ESPERADO: facilities_al
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: HIST_1 - 25/05/2025 09:57:00
+=========================================================
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - HIST
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira\hist
+### ESPERADO: 2025.04
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: TRACKING - 25/05/2025 10:00:00
+=========================================================
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - HIST_1
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira\hist
+### ESPERADO: 2025.05_HV
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - TRACKING
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira
+### ESPERADO: tracking_al
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: FACILITIES - 25/05/2025 13:21:00
+=========================================================
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: HIST - 25/05/2025 13:24:00
+=========================================================
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - FACILITIES
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira
+### ESPERADO: facilities_al
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: HIST_1 - 25/05/2025 13:27:00
+=========================================================
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - HIST
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira\hist
+### ESPERADO: 2025.04
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: TRACKING - 25/05/2025 13:30:00
+=========================================================
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - HIST_1
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira\hist
+### ESPERADO: 2025.05_HV
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - TRACKING
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira
+### ESPERADO: tracking_al
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: FACILITIES - 25/05/2025 14:51:00
+=========================================================
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: HIST - 25/05/2025 14:54:00
+=========================================================
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - FACILITIES
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira
+### ESPERADO: facilities_al
+### RESULTADO: ✔ ARQUIVO GERADO COM SUCESSO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: HIST_1 - 25/05/2025 14:57:00
+=========================================================
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - HIST
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira\hist
+### ESPERADO: 2025.04
+### RESULTADO: ✔ ARQUIVO GERADO COM SUCESSO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: TRACKING - 25/05/2025 15:00:00
+=========================================================
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - HIST_1
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira\hist
+### ESPERADO: 2025.05_HV
+### RESULTADO: ✔ ARQUIVO GERADO COM SUCESSO
+#########################################################
+
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - TRACKING
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira
+### ESPERADO: tracking_al
+### RESULTADO: ✔ ARQUIVO GERADO COM SUCESSO
+#########################################################
+
+
+=========================================================
+### [MULTI] INICIANDO EXECUÇÃO: EQUIPAMENTOS - 26/05/2025 08:00:00
+=========================================================
+
+=========================================================
+### [MULTI] INICIANDO EXECUÇÃO: LICENCAS - 26/05/2025 08:03:00
+=========================================================
+
+#########################################################
+### [MULTI] RESULTADO DA EXECUÇÃO - LICENCAS
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\multi
+### ESPERADO: Relatório_de_Licenças.csv
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: FACILITIES - 26/05/2025 08:21:00
+=========================================================
+
+=========================================================
+### [MULTI] INICIANDO EXECUÇÃO: EQUIPAMENTOS - 26/05/2025 13:47:17
+=========================================================
+
+=========================================================
+### [MULTI] INICIANDO EXECUÇÃO: LICENCAS - 26/05/2025 13:50:00
+=========================================================
+
+#########################################################
+### [MULTI] RESULTADO DA EXECUÇÃO - EQUIPAMENTOS
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\multi
+### ESPERADO: Relatório_de_Equipamentos.csv
+### RESULTADO: ✔ ARQUIVO GERADO COM SUCESSO
+#########################################################
+
+
+#########################################################
+### [MULTI] RESULTADO DA EXECUÇÃO - LICENCAS
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\multi
+### ESPERADO: Relatório_de_Licenças.csv
+### RESULTADO: ✔ ARQUIVO GERADO COM SUCESSO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: FACILITIES - 26/05/2025 14:51:00
+=========================================================
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: HIST - 26/05/2025 14:54:04
+=========================================================
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: HIST_1 - 26/05/2025 14:57:00
+=========================================================
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - HIST
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira\hist
+### ESPERADO: 2025.04
+### RESULTADO: ✔ ARQUIVO GERADO COM SUCESSO
+#########################################################
+
+
+=========================================================
+### [AUTOMATION] INICIANDO EXECUÇÃO: TRACKING - 26/05/2025 15:00:00
+=========================================================
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - HIST_1
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira\hist
+### ESPERADO: 2025.05_HV
+### RESULTADO: ✔ ARQUIVO GERADO COM SUCESSO
+#########################################################
+
+
+#########################################################
+### [AUTOMATION] RESULTADO DA EXECUÇÃO - TRACKING
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira
+### ESPERADO: tracking_al
+### RESULTADO: ✔ ARQUIVO GERADO COM SUCESSO
+#########################################################
+

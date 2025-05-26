@@ -7,13 +7,18 @@ import hist
 import hist_1
 import licencas_multi
 import equipamentos
+import ctes
 
 # Caminho do log
 LOG_PATH = r"C:\Users\Gral\Projetos\AutoGuiLira\log_execucoes.txt"
 
+# Extra
+ano_mes = datetime.datetime.now().strftime("%Y.%m")
+
 # Horários principais
-HORARIOS_AUTOMATION = ["08:30", "10:00", "13:30", "15:00"]
+HORARIOS_LIRA = ["08:30", "10:00", "13:30", "15:00"]
 HORARIOS_MULTI = ["08:00"]
+HORARIOS_CTES = ["09:00", "10:30", "11:30", "14:30", "15:30", "17:00"]
 
 def str_to_time(hora_str):
     return datetime.datetime.strptime(hora_str, "%H:%M").time()
@@ -22,7 +27,7 @@ def agendar_execucoes():
     execucoes = []
 
     # Automation
-    for hora_str in HORARIOS_AUTOMATION:
+    for hora_str in HORARIOS_LIRA:
         base_time = str_to_time(hora_str)
         data = datetime.datetime.combine(datetime.date.today(), base_time)
         execucoes.extend([
@@ -40,6 +45,12 @@ def agendar_execucoes():
             (data, "equipamentos"),
             (data + datetime.timedelta(minutes=3), "licencas"),
         ])
+
+    # CTEs
+    for hora_str in HORARIOS_CTES:
+        base_time = str_to_time(hora_str)
+        data = datetime.datetime.combine(datetime.date.today(), base_time)
+        execucoes.append((data, "ctes"))  
 
     return execucoes
 
@@ -67,6 +78,9 @@ def verificar_arquivo(tarefa):
     elif tarefa == "licencas":
         caminho = r"C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\multi"
         esperado = "Relatório_de_Licenças.csv"
+    elif tarefa == "ctes":
+        caminho = r"C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\multi"
+        esperado = f"CTEs_{ano_mes}.csv"
     else:
         return
 
@@ -87,7 +101,12 @@ def verificar_arquivo(tarefa):
                 sucesso = True
                 break
 
-    tipo = "AUTOMATION" if tarefa in ["facilities", "tracking", "hist", "hist_1"] else "MULTI"
+    if tarefa in ["facilities", "tracking", "hist", "hist_1"]:
+        tipo = "AUTOMATION"
+    elif tarefa == "ctes":
+        tipo = "CTES"
+    else:
+        tipo = "MULTI"
     resultado = "✔ ARQUIVO GERADO COM SUCESSO" if sucesso else "✖ ERRO: ARQUIVO NÃO GERADO"
 
     mensagem = f"""
@@ -103,7 +122,12 @@ def verificar_arquivo(tarefa):
 
 def executar_tarefa(tarefa):
     agora_str = datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')
-    tipo = "AUTOMATION" if tarefa in ["facilities", "tracking", "hist", "hist_1"] else "MULTI"
+    if tarefa in ["facilities", "tracking", "hist", "hist_1"]:
+        tipo = "AUTOMATION"
+    elif tarefa == "ctes":
+        tipo = "CTES"
+    else:
+        tipo = "MULTI"
     cabecalho = f"""
 =========================================================
 ### [{tipo}] INICIANDO EXECUÇÃO: {tarefa.upper()} - {agora_str}
@@ -125,7 +149,8 @@ def executar_tarefa(tarefa):
             threading.Thread(target=equipamentos.main).start()
         elif tarefa == "licencas":
             threading.Thread(target=licencas_multi.main).start()
-        
+        elif tarefa == "ctes":
+            threading.Thread(target=ctes.main).start()
         threading.Thread(target=verificar_arquivo, args=(tarefa,)).start()
     except Exception as e:
         erro_log = f"""
