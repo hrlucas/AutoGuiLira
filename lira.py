@@ -12,7 +12,7 @@ import hist_1
 ### Sempre iniciar na ordem - Monitor de rastreamento - Relatórios de Viagens - Relatórios diversos ###
 
 # Caminho do log
-LOG_PATH = r"C:\Users\Gral\Projetos\AutoGuiLira\log_execucoes.txt"
+LOG_PATH = r"C:\Users\Gral\Projetos\AutoGuiLira\log_lira.txt"
 
 # Define os horários principais (com hora exata)
 HORARIOS_BASE = ["08:30", "10:00", "13:30", "15:00"]
@@ -41,6 +41,89 @@ def agendar_execucoes():
 
     return execucoes
 
+def verificar_arquivo(tarefa):
+    time.sleep(240)  # Aguarda 4 minutos
+    data_atual = datetime.datetime.now()
+
+    if tarefa == "facilities":
+        caminho = r"C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira"
+        esperado = "facilities_al"
+    elif tarefa == "tracking":
+        caminho = r"C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira"
+        esperado = "tracking_al"
+    elif tarefa == "hist":
+        mes_anterior = data_atual.month - 1 or 12
+        ano = data_atual.year if data_atual.month > 1 else data_atual.year - 1
+        esperado = f"{ano}.{mes_anterior:02d}"
+        caminho = r"C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira\hist"
+    elif tarefa == "hist_1":
+        esperado = data_atual.strftime("%Y.%m_HV")
+        caminho = r"C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira\hist"
+    else:
+        return
+
+    arquivos = os.listdir(caminho)
+    # Pega o horário programado da tarefa
+    execucoes = {t: dt for dt, t in agendar_execucoes()}
+    horario_tarefa = execucoes.get(tarefa)
+    if not horario_tarefa:
+        horario_tarefa = data_atual
+
+    sucesso = False
+    for nome in arquivos:
+        if esperado in nome:
+            caminho_arquivo = os.path.join(caminho, nome)
+            mtime = datetime.datetime.fromtimestamp(os.path.getmtime(caminho_arquivo))
+            # Verifica se está dentro de 10 minutos do horário programado
+            if abs((mtime - horario_tarefa).total_seconds()) <= 600:
+                sucesso = True
+                break
+
+    if tarefa in ["facilities", "tracking", "hist", "hist_1"]:
+        tipo = "AUTOMATION"
+    resultado = "✔ ARQUIVO GERADO COM SUCESSO" if sucesso else "✖ ERRO: ARQUIVO NÃO GERADO"
+
+    mensagem = f"""
+#########################################################
+### [{tipo}] RESULTADO DA EXECUÇÃO - {tarefa.upper()}
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: {caminho}
+### ESPERADO: {esperado}
+### RESULTADO: {resultado}
+#########################################################
+"""
+    registrar_log(mensagem)
+
+def executar_tarefa(tarefa):
+    agora_str = datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')
+    if tarefa in ["facilities", "tracking", "hist", "hist_1"]:
+        tipo = "AUTOMATION"
+    cabecalho = f"""
+=========================================================
+### [{tipo}] INICIANDO EXECUÇÃO: {tarefa.upper()} - {agora_str}
+========================================================="""
+    print(cabecalho)
+    registrar_log(cabecalho)
+
+    try:
+        import threading
+        if tarefa == "tracking":
+            threading.Thread(target=tracking_al.main).start()
+        elif tarefa == "facilities":
+            threading.Thread(target=facilities_al.main).start()
+        elif tarefa == "hist":
+            threading.Thread(target=hist.main).start()
+        elif tarefa == "hist_1":
+            threading.Thread(target=hist_1.main).start()
+    except Exception as e:
+        erro_log = f"""
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! ERRO AO EXECUTAR {tarefa.upper()}: {str(e)}
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"""
+        print(erro_log)
+        registrar_log(erro_log)
+
+
 def loop_agendador():
    # Loop principal para agendar e executar os scripts nos horários definidos 
     execucoes_realizadas = set()
@@ -64,27 +147,6 @@ def registrar_log(mensagem):
     os.makedirs(os.path.dirname(LOG_PATH), exist_ok=True)
     with open(LOG_PATH, "a", encoding="utf-8") as f:
         f.write(f"{mensagem}\n")
-
-def executar_tarefa(tarefa):
-   # Executa o script conforme o tipo de tarefa "
-    agora_str = datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')
-    mensagem_log = f"{agora_str} - Executando: {tarefa}"
-    print(mensagem_log)
-    registrar_log(mensagem_log)
-
-    try:
-        if tarefa == "tracking":
-            threading.Thread(target=tracking_al.main).start()
-        elif tarefa == "facilities":
-            threading.Thread(target=facilities_al.main).start()
-        elif tarefa == "hist":
-            threading.Thread(target=hist.main).start()
-        elif tarefa == "hist_1":  
-            threading.Thread(target=hist_1.main).start()
-    except Exception as e:
-        erro_log = f"{agora_str} - ERRO ao executar {tarefa}: {str(e)}"
-        print(erro_log)
-        registrar_log(erro_log)
 
 if __name__ == "__main__":
     loop_agendador()

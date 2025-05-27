@@ -1,0 +1,13 @@
+
+=========================================================
+### [CTES] INICIANDO EXECUÇÃO: CTES - 27/05/2025 15:18:00
+=========================================================
+
+#########################################################
+### [CTES] RESULTADO DA EXECUÇÃO - CTES
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\multi
+### ESPERADO: CTEs_2025.05.csv
+### RESULTADO: ✖ ERRO: ARQUIVO NÃO GERADO
+#########################################################
+
