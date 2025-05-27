@@ -1,15 +1,21 @@
-import licencas_multi
-import equipamentos
+import sys
 import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import time
 import datetime
 import threading
+import facilities_al
+import tracking_al
+import hist
+import hist_1
+
+### Sempre iniciar na ordem - Monitor de rastreamento - Relatórios de Viagens - Relatórios diversos ###
 
 # Caminho do log
-LOG_PATH = r"C:\Users\Gral\Projetos\KMM Multi\log_multi.txt"
+LOG_PATH = r"C:\Users\Gral\Projetos\AutoGuiLira\log_lira.txt"
 
 # Define os horários principais (com hora exata)
-HORARIOS_BASE = ["08:00"]
+HORARIOS_BASE = ["08:30"]
 
 def str_to_time(hora_str):
     # Converte string para objeto de tempo 
@@ -23,11 +29,15 @@ def agendar_execucoes():
         base_time = str_to_time(hora_str)
 
         # Calcula os horários de execução para cada script
-        hora_equipamentos = datetime.datetime.combine(datetime.date.today(), base_time)
-        hora_licencas = hora_equipamentos + datetime.timedelta(minutes=3)
+        hora_tracking = datetime.datetime.combine(datetime.date.today(), base_time)
+        hora_facilities = hora_tracking - datetime.timedelta(minutes=9)
+        hora_hist = hora_tracking - datetime.timedelta(minutes=6)
+        hora_hist_1 = hora_tracking - datetime.timedelta(minutes=3)
 
-        execucoes.append((hora_equipamentos.time(), "equipamentos"))
-        execucoes.append((hora_licencas.time(), "licencas"))
+        execucoes.append((hora_facilities.time(), "facilities"))
+        execucoes.append((hora_hist.time(), "hist"))
+        execucoes.append((hora_hist_1.time(), "hist_1"))  
+        execucoes.append((hora_tracking.time(), "tracking"))
 
     return execucoes
 
@@ -35,12 +45,20 @@ def verificar_arquivo(tarefa):
     time.sleep(240)  # Aguarda 4 minutos
     data_atual = datetime.datetime.now()
 
-    if tarefa == "equipamentos":
-        caminho = r"C:\Users\Gral\TRANSPORTES GRAL LTDA\Gral - Documentos\01. SIG - Sistema Integrado Gral\02. Bases\01. Originais\02. Multi\01. Hist\CTes\STerm"
-        esperado = "Relatório_de_Equipamentos.csv"
-    elif tarefa == "licencas":
-        caminho = r"C:\Users\Gral\TRANSPORTES GRAL LTDA\Gral - Documentos\01. SIG - Sistema Integrado Gral\02. Bases\01. Originais\02. Multi\01. Hist\CTes\STerm"
-        esperado = "Relatório_de_Licenças.csv"
+    if tarefa == "facilities":
+        caminho = r"C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira"
+        esperado = "facilities_al"
+    elif tarefa == "tracking":
+        caminho = r"C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira"
+        esperado = "tracking_al"
+    elif tarefa == "hist":
+        mes_anterior = data_atual.month - 1 or 12
+        ano = data_atual.year if data_atual.month > 1 else data_atual.year - 1
+        esperado = f"{ano}.{mes_anterior:02d}"
+        caminho = r"C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira\hist"
+    elif tarefa == "hist_1":
+        esperado = data_atual.strftime("%Y.%m_HV")
+        caminho = r"C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\alira\hist"
     else:
         return
 
@@ -61,8 +79,8 @@ def verificar_arquivo(tarefa):
                 sucesso = True
                 break
 
-    if tarefa in ["equipamentos", "licencas"]:
-        tipo = "MULTI"
+    if tarefa in ["facilities", "tracking", "hist", "hist_1"]:
+        tipo = "AUTOMATION"
     resultado = "✔ ARQUIVO GERADO COM SUCESSO" if sucesso else "✖ ERRO: ARQUIVO NÃO GERADO"
 
     mensagem = f"""
@@ -78,8 +96,8 @@ def verificar_arquivo(tarefa):
 
 def executar_tarefa(tarefa):
     agora_str = datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')
-    if tarefa in ["equipamentos", "licencas"]:
-        tipo = "MULTI"
+    if tarefa in ["facilities", "tracking", "hist", "hist_1"]:
+        tipo = "AUTOMATION"
     cabecalho = f"""
 =========================================================
 ### [{tipo}] INICIANDO EXECUÇÃO: {tarefa.upper()} - {agora_str}
@@ -89,11 +107,14 @@ def executar_tarefa(tarefa):
 
     try:
         import threading
-        if tarefa == "equipamentos":
-            threading.Thread(target=equipamentos.main).start()
-        elif tarefa == "licencas":
-            threading.Thread(target=licencas_multi.main).start()
-        threading.Thread(target=verificar_arquivo, args=(tarefa,)).start()
+        if tarefa == "tracking":
+            threading.Thread(target=tracking_al.main).start()
+        elif tarefa == "facilities":
+            threading.Thread(target=facilities_al.main).start()
+        elif tarefa == "hist":
+            threading.Thread(target=hist.main).start()
+        elif tarefa == "hist_1":
+            threading.Thread(target=hist_1.main).start()
     except Exception as e:
         erro_log = f"""
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -104,7 +125,7 @@ def executar_tarefa(tarefa):
 
 
 def loop_agendador():
-    # Loop principal para agendar e executar os scripts nos horários definidos 
+   # Loop principal para agendar e executar os scripts nos horários definidos 
     execucoes_realizadas = set()
 
     while True:
