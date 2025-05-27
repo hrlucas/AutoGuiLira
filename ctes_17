@@ -1,0 +1,118 @@
+import os
+import time
+import datetime
+import facilities_al
+import tracking_al
+import hist
+import hist_1
+import licencas_multi
+import equipamentos
+import ctes
+
+# Caminho do log
+LOG_PATH = r"C:\Users\Gral\Projetos\AutoGuiLira\log_ctes.txt"
+
+# Extra
+ano_mes = datetime.datetime.now().strftime("%Y.%m")
+
+# Horários principais
+HORARIOS_CTES = ["17:00"]
+
+def str_to_time(hora_str):
+    return datetime.datetime.strptime(hora_str, "%H:%M").time()
+
+def agendar_execucoes():
+    execucoes = []
+    # CTEs
+    for hora_str in HORARIOS_CTES:
+        base_time = str_to_time(hora_str)
+        data = datetime.datetime.combine(datetime.date.today(), base_time)
+        execucoes.append((data, "ctes"))  
+
+    return execucoes
+
+def verificar_arquivo(tarefa):
+    time.sleep(240)  # Aguarda 4 minutos
+    data_atual = datetime.datetime.now()
+
+    if tarefa == "ctes":
+        caminho = r"C:\Users\Gral\TRANSPORTES GRAL LTDA\RTO - PB\sig\multi"
+        esperado = f"CTEs_{ano_mes}.csv"
+    else:
+        return
+
+    arquivos = os.listdir(caminho)
+    # Pega o horário programado da tarefa
+    execucoes = {t: dt for dt, t in agendar_execucoes()}
+    horario_tarefa = execucoes.get(tarefa)
+    if not horario_tarefa:
+        horario_tarefa = data_atual
+
+    sucesso = False
+    for nome in arquivos:
+        if esperado in nome:
+            caminho_arquivo = os.path.join(caminho, nome)
+            mtime = datetime.datetime.fromtimestamp(os.path.getmtime(caminho_arquivo))
+            # Verifica se está dentro de 10 minutos do horário programado
+            if abs((mtime - horario_tarefa).total_seconds()) <= 600:
+                sucesso = True
+                break
+
+    if tarefa in ["ctes"]:
+        tipo = "CTES"
+    resultado = "✔ ARQUIVO GERADO COM SUCESSO" if sucesso else "✖ ERRO: ARQUIVO NÃO GERADO"
+
+    mensagem = f"""
+#########################################################
+### [{tipo}] RESULTADO DA EXECUÇÃO - {tarefa.upper()}
+### VERIFICAÇÃO APÓS 4 MINUTOS
+### DIRETÓRIO: {caminho}
+### ESPERADO: {esperado}
+### RESULTADO: {resultado}
+#########################################################
+"""
+    registrar_log(mensagem)
+
+def executar_tarefa(tarefa):
+    agora_str = datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')
+    if tarefa in ["ctes"]:
+        tipo = "CTES"
+    cabecalho = f"""
+=========================================================
+### [{tipo}] INICIANDO EXECUÇÃO: {tarefa.upper()} - {agora_str}
+========================================================="""
+    print(cabecalho)
+    registrar_log(cabecalho)
+
+    try:
+        import threading
+        if tarefa == "ctes":
+            threading.Thread(target=ctes.main).start()
+        threading.Thread(target=verificar_arquivo, args=(tarefa,)).start()
+    except Exception as e:
+        erro_log = f"""
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! ERRO AO EXECUTAR {tarefa.upper()}: {str(e)}
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"""
+        print(erro_log)
+        registrar_log(erro_log)
+
+def registrar_log(mensagem):
+    os.makedirs(os.path.dirname(LOG_PATH), exist_ok=True)
+    with open(LOG_PATH, "a", encoding="utf-8") as f:
+        f.write(f"{mensagem}\n")
+
+def loop_agendador():
+    execucoes_realizadas = set()
+    while True:
+        agora = datetime.datetime.now().replace(second=0, microsecond=0)
+        for dt, tarefa in agendar_execucoes():
+            if agora == dt and (dt, tarefa) not in execucoes_realizadas:
+                execucoes_realizadas.add((dt, tarefa))
+                executar_tarefa(tarefa)
+        if datetime.datetime.now().time() == datetime.time(0, 0):
+            execucoes_realizadas.clear()
+        time.sleep(1)
+
+if __name__ == "__main__":
+    loop_agendador()
