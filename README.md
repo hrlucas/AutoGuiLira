@@ -8,6 +8,10 @@ Este projeto foi idealizado e desenvolvido por Lucas Hochmann Rosa, durante seu 
 
 A necessidade surgiu no contexto do setor de logística e transporte, no qual a Transportes Gral atua, e onde diversos relatórios diários e consultas a sistemas web são realizados manualmente, consumindo tempo e sendo suscetíveis a falhas humanas.
 
+##
+- **Ordem para iniciar Lira Logistica** -
+    Somente iniciar os scripts com o AngelLira aberto no múdulo logistica nessa ordem **Monitor de rastreamento - Relatórios de Viagens - Relatórios diversos**.
+
 ## Tecnologias Utilizadas
 
 - **Python** (versão 3.x)
